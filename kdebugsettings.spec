@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdebugsettings
-Version  : 19.04.3
-Release  : 11
-URL      : https://download.kde.org/stable/applications/19.04.3/src/kdebugsettings-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/kdebugsettings-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/kdebugsettings-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 12
+URL      : https://download.kde.org/stable/applications/19.08.0/src/kdebugsettings-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/kdebugsettings-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/kdebugsettings-19.08.0.tar.xz.sig
 Summary  : An application to enable/disable qCDebug
 Group    : Development/Tools
 License  : LGPL-2.0
@@ -59,16 +59,17 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-19.04.3
+%setup -q -n kdebugsettings-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562866972
+export SOURCE_DATE_EPOCH=1565896445
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -82,7 +83,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562866972
+export SOURCE_DATE_EPOCH=1565896445
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/COPYING
@@ -101,8 +102,9 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kdebugsettings.desktop
-/usr/share/xdg/kde.categories
-/usr/share/xdg/kde.renamecategories
+/usr/share/qlogging-categories5/kde.categories
+/usr/share/qlogging-categories5/kde.renamecategories
+/usr/share/qlogging-categories5/kdebugsettings.categories
 
 %files license
 %defattr(0644,root,root,0755)
