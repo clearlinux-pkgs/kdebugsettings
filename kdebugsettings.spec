@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdebugsettings
-Version  : 19.08.1
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.08.1/src/kdebugsettings-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/kdebugsettings-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/kdebugsettings-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz.sig
 Summary  : An application to enable/disable qCDebug
 Group    : Development/Tools
 License  : LGPL-2.0
@@ -59,14 +59,14 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-19.08.1
+%setup -q -n kdebugsettings-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567697982
+export SOURCE_DATE_EPOCH=1570739840
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -79,11 +79,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567697982
+export SOURCE_DATE_EPOCH=1570739840
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/COPYING
