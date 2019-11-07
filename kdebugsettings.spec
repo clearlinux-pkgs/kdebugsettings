@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdebugsettings
-Version  : 19.08.2
-Release  : 14
-URL      : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/kdebugsettings-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 15
+URL      : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz.sig
 Summary  : An application to enable/disable qCDebug
 Group    : Development/Tools
 License  : LGPL-2.0
@@ -59,14 +59,14 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-19.08.2
+%setup -q -n kdebugsettings-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570739840
+export SOURCE_DATE_EPOCH=1573165364
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -83,10 +83,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570739840
+export SOURCE_DATE_EPOCH=1573165364
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
-cp COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/COPYING
+cp %{_builddir}/kdebugsettings-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 pushd clr-build
 %make_install
 popd
@@ -108,7 +108,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdebugsettings/COPYING
+/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 
 %files locales -f kdebugsettings.lang
 %defattr(-,root,root,-)
