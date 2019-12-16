@@ -5,16 +5,17 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdebugsettings
-Version  : 19.08.3
-Release  : 15
-URL      : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.3/src/kdebugsettings-19.08.3.tar.xz.sig
+Version  : 19.12.0
+Release  : 16
+URL      : https://download.kde.org/stable/release-service/19.12.0/src/kdebugsettings-19.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.0/src/kdebugsettings-19.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.0/src/kdebugsettings-19.12.0.tar.xz.sig
 Summary  : An application to enable/disable qCDebug
 Group    : Development/Tools
 License  : LGPL-2.0
 Requires: kdebugsettings-bin = %{version}-%{release}
 Requires: kdebugsettings-data = %{version}-%{release}
+Requires: kdebugsettings-lib = %{version}-%{release}
 Requires: kdebugsettings-license = %{version}-%{release}
 Requires: kdebugsettings-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
@@ -42,6 +43,16 @@ Group: Data
 data components for the kdebugsettings package.
 
 
+%package lib
+Summary: lib components for the kdebugsettings package.
+Group: Libraries
+Requires: kdebugsettings-data = %{version}-%{release}
+Requires: kdebugsettings-license = %{version}-%{release}
+
+%description lib
+lib components for the kdebugsettings package.
+
+
 %package license
 Summary: license components for the kdebugsettings package.
 Group: Default
@@ -59,14 +70,15 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-19.08.3
+%setup -q -n kdebugsettings-19.12.0
+cd %{_builddir}/kdebugsettings-19.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573165364
+export SOURCE_DATE_EPOCH=1576530951
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -83,10 +95,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573165364
+export SOURCE_DATE_EPOCH=1576530951
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
-cp %{_builddir}/kdebugsettings-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kdebugsettings-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 pushd clr-build
 %make_install
 popd
@@ -102,9 +114,15 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kdebugsettings.desktop
+/usr/share/metainfo/org.kde.kdebugsettings.appdata.xml
 /usr/share/qlogging-categories5/kde.categories
 /usr/share/qlogging-categories5/kde.renamecategories
 /usr/share/qlogging-categories5/kdebugsettings.categories
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libkdebugsettings.so.19.12.0
+/usr/lib64/libkdebugsettings.so.5
 
 %files license
 %defattr(0644,root,root,0755)
