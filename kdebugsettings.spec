@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdebugsettings
-Version  : 20.04.2
-Release  : 22
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/kdebugsettings-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/kdebugsettings-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/kdebugsettings-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 23
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/kdebugsettings-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/kdebugsettings-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/kdebugsettings-20.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.0
@@ -71,15 +71,15 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-20.04.2
-cd %{_builddir}/kdebugsettings-20.04.2
+%setup -q -n kdebugsettings-20.08.0
+cd %{_builddir}/kdebugsettings-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591906300
+export SOURCE_DATE_EPOCH=1597778849
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -91,14 +91,14 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591906300
+export SOURCE_DATE_EPOCH=1597778849
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
-cp %{_builddir}/kdebugsettings-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kdebugsettings-20.08.0/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 pushd clr-build
 %make_install
 popd
@@ -115,13 +115,12 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kdebugsettings.desktop
 /usr/share/metainfo/org.kde.kdebugsettings.appdata.xml
-/usr/share/qlogging-categories5/kde.categories
 /usr/share/qlogging-categories5/kde.renamecategories
 /usr/share/qlogging-categories5/kdebugsettings.categories
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkdebugsettings.so.20.04.2
+/usr/lib64/libkdebugsettings.so.20.08.0
 /usr/lib64/libkdebugsettings.so.5
 
 %files license
