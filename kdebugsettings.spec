@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdebugsettings
-Version  : 20.12.3
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/kdebugsettings-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/kdebugsettings-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/kdebugsettings-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/kdebugsettings-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/kdebugsettings-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/kdebugsettings-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : LGPL-2.0
+License  : BSD-3-Clause LGPL-2.0
 Requires: kdebugsettings-bin = %{version}-%{release}
 Requires: kdebugsettings-data = %{version}-%{release}
 Requires: kdebugsettings-lib = %{version}-%{release}
@@ -71,15 +71,15 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-20.12.3
-cd %{_builddir}/kdebugsettings-20.12.3
+%setup -q -n kdebugsettings-21.04.0
+cd %{_builddir}/kdebugsettings-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618668148
+export SOURCE_DATE_EPOCH=1619210621
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,10 +95,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618668148
+export SOURCE_DATE_EPOCH=1619210621
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
-cp %{_builddir}/kdebugsettings-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kdebugsettings-21.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kdebugsettings/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/kdebugsettings-21.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
@@ -114,18 +115,20 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kdebugsettings.desktop
+"/usr/share/kdebugsettings/groups/Full Debug Ruqola"
 /usr/share/metainfo/org.kde.kdebugsettings.appdata.xml
 /usr/share/qlogging-categories5/kde.renamecategories
 /usr/share/qlogging-categories5/kdebugsettings.categories
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkdebugsettings.so.20.12.3
+/usr/lib64/libkdebugsettings.so.21.04.0
 /usr/lib64/libkdebugsettings.so.5
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdebugsettings/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+/usr/share/package-licenses/kdebugsettings/29fb05b49e12a380545499938c4879440bd8851e
+/usr/share/package-licenses/kdebugsettings/a4c60b3fefda228cd7439d3565df043192fef137
 
 %files locales -f kdebugsettings.lang
 %defattr(-,root,root,-)
