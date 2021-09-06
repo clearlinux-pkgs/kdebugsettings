@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdebugsettings
-Version  : 21.04.2
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kdebugsettings-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kdebugsettings-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kdebugsettings-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kdebugsettings-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kdebugsettings-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kdebugsettings-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause LGPL-2.0
+License  : BSD-3-Clause LGPL-2.0 MIT
 Requires: kdebugsettings-bin = %{version}-%{release}
 Requires: kdebugsettings-data = %{version}-%{release}
 Requires: kdebugsettings-lib = %{version}-%{release}
@@ -71,35 +71,37 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-21.04.2
-cd %{_builddir}/kdebugsettings-21.04.2
+%setup -q -n kdebugsettings-21.08.1
+cd %{_builddir}/kdebugsettings-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623377577
+export SOURCE_DATE_EPOCH=1630898115
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623377577
+export SOURCE_DATE_EPOCH=1630898115
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
-cp %{_builddir}/kdebugsettings-21.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kdebugsettings/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/kdebugsettings-21.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/kdebugsettings-21.08.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kdebugsettings/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/kdebugsettings-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
+cp %{_builddir}/kdebugsettings-21.08.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/kdebugsettings-21.08.1/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/adadb67a9875aeeac285309f1eab6e47d9ee08a7
 pushd clr-build
 %make_install
 popd
@@ -122,13 +124,15 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkdebugsettings.so.21.04.2
+/usr/lib64/libkdebugsettings.so.21.08.1
 /usr/lib64/libkdebugsettings.so.5
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kdebugsettings/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/kdebugsettings/a4c60b3fefda228cd7439d3565df043192fef137
+/usr/share/package-licenses/kdebugsettings/adadb67a9875aeeac285309f1eab6e47d9ee08a7
+/usr/share/package-licenses/kdebugsettings/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
 
 %files locales -f kdebugsettings.lang
 %defattr(-,root,root,-)
