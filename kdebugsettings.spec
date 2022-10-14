@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdebugsettings
-Version  : 22.08.1
-Release  : 44
-URL      : https://download.kde.org/stable/release-service/22.08.1/src/kdebugsettings-22.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.1/src/kdebugsettings-22.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.1/src/kdebugsettings-22.08.1.tar.xz.sig
+Version  : 22.08.2
+Release  : 45
+URL      : https://download.kde.org/stable/release-service/22.08.2/src/kdebugsettings-22.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.2/src/kdebugsettings-22.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.2/src/kdebugsettings-22.08.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0
@@ -70,15 +70,15 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-22.08.1
-cd %{_builddir}/kdebugsettings-22.08.1
+%setup -q -n kdebugsettings-22.08.2
+cd %{_builddir}/kdebugsettings-22.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662827868
+export SOURCE_DATE_EPOCH=1665723926
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,7 +94,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662827868
+export SOURCE_DATE_EPOCH=1665723926
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
 cp %{_builddir}/kdebugsettings-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/kdebugsettings/c011fda7746c087a127999da1c4044854ee42238 || :
@@ -125,7 +125,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkdebugsettings.so.22.08.1
+/usr/lib64/libkdebugsettings.so.22.08.2
 /usr/lib64/libkdebugsettings.so.5
 
 %files license
