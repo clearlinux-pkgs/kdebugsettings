@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdebugsettings
-Version  : 23.08.3
-Release  : 61
-URL      : https://download.kde.org/stable/release-service/23.08.3/src/kdebugsettings-23.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.3/src/kdebugsettings-23.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.3/src/kdebugsettings-23.08.3.tar.xz.sig
+Version  : 23.08.4
+Release  : 62
+URL      : https://download.kde.org/stable/release-service/23.08.4/src/kdebugsettings-23.08.4.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.4/src/kdebugsettings-23.08.4.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.4/src/kdebugsettings-23.08.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0
@@ -76,15 +76,15 @@ locales components for the kdebugsettings package.
 
 
 %prep
-%setup -q -n kdebugsettings-23.08.3
-cd %{_builddir}/kdebugsettings-23.08.3
+%setup -q -n kdebugsettings-23.08.4
+cd %{_builddir}/kdebugsettings-23.08.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701981484
+export SOURCE_DATE_EPOCH=1702976557
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,7 +143,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701981484
+export SOURCE_DATE_EPOCH=1702976557
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdebugsettings
 cp %{_builddir}/kdebugsettings-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdebugsettings/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
@@ -177,11 +177,11 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkdebugsettings.so.23.08.3
-/V3/usr/lib64/libkdebugsettingscore.so.23.08.3
-/usr/lib64/libkdebugsettings.so.23.08.3
+/V3/usr/lib64/libkdebugsettings.so.23.08.4
+/V3/usr/lib64/libkdebugsettingscore.so.23.08.4
+/usr/lib64/libkdebugsettings.so.23.08.4
 /usr/lib64/libkdebugsettings.so.5
-/usr/lib64/libkdebugsettingscore.so.23.08.3
+/usr/lib64/libkdebugsettingscore.so.23.08.4
 /usr/lib64/libkdebugsettingscore.so.5
 
 %files license
